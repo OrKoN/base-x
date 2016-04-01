@@ -1,14 +1,16 @@
-# base-x
+# base-x-native
 
-[![NPM Package](https://img.shields.io/npm/v/base-x.svg?style=flat-square)](https://www.npmjs.org/package/base-x)
-[![Build Status](https://img.shields.io/travis/cryptocoinjs/base-x.svg?branch=master&style=flat-square)](https://travis-ci.org/cryptocoinjs/base-x)
+[![NPM Package](https://img.shields.io/npm/v/base-x-native.svg?style=flat-square)](https://www.npmjs.org/package/base-x-native)
+[![Build Status](https://img.shields.io/travis/OrKoN/base-x-native.svg?branch=master&style=flat-square)](https://travis-ci.org/OrKoN/base-x-native)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-This is a fork of the original project that uses a Rust module to do computations.
+This is a fork of the original project that uses a Rust module to do computations: https://github.com/cryptocoinjs/base-x
 
 [Not Yet Fast] base encoding / decoding of any given alphabet using bitcoin style leading
 zero compression.
+
+** NOT PROD READY **
 
 ## Example
 

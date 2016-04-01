@@ -1,6 +1,6 @@
 {
-  "name": "base-x",
-  "version": "1.0.4",
+  "name": "base-x-native",
+  "version": "0.0.1",
   "description": "Fast base encoding / decoding of any given alphabet",
   "keywords": [
     "base-x",
@@ -14,9 +14,9 @@
     "encode",
     "encoding"
   ],
-  "homepage": "https://github.com/cryptocoinjs/base-x",
+  "homepage": "https://github.com/OrKoN/base-x-native",
   "bugs": {
-    "url": "https://github.com/cryptocoinjs/base-x/issues"
+    "url": "https://github.com/OrKoN/base-x-native/issues"
   },
   "license": "MIT",
   "author": "Daniel Cousens",
@@ -26,7 +26,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cryptocoinjs/base-x.git"
+    "url": "https://github.com/OrKoN/base-x-native.git"
   },
   "scripts": {
     "standard": "standard",
