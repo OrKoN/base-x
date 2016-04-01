@@ -39,11 +39,11 @@ if (/fast/i.test(process.argv[2])) {
 }
 
 suite
-.on('cycle', function(event) {
+.on('cycle', function (event) {
   benchmarks.add(event.target)
 })
 
-suite.on('complete', function() {
+suite.on('complete', function () {
   benchmarks.log()
 })
 

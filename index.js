@@ -14,10 +14,12 @@ module.exports = function base (ALPHABET) {
     if (source.length === 0) return ''
     return native.encode(ALPHABET, source)
   }
+
   function decode (string) {
     if (string.length === 0) return []
     return native.decode(ALPHABET, string)
   }
+
   return {
     encode: encode,
     decode: decode
