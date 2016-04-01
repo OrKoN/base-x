@@ -1,0 +1,13 @@
+[package]
+name = "base-x-neon"
+version = "0.1.0"
+authors = ["Alex R. <alexei.rudenko@gmail.com>"]
+license = "MIT"
+
+[lib]
+name = "base_x_neon"
+crate-type = ["dylib"]
+
+[dependencies]
+neon = "0.1"
+base-x = "0.1"

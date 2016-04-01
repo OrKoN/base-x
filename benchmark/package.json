@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "beautify-benchmark": "^0.2.4",
     "benchmark": "^1.0.0",
     "xorshift.js": "^1.0.3"
   }

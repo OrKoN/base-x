@@ -1,10 +1,13 @@
 'use strict'
 var crypto = require('crypto')
 var benchmark = require('benchmark')
+var suite = new benchmark.Suite()
+var benchmarks = require('beautify-benchmark')
 var XorShift128Plus = require('xorshift.js').XorShift128Plus
 
 var bs58ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-var bs58 = require('../')(bs58ALPHABET)
+var bs58Rust = require('../')(bs58ALPHABET)
+var bs58Js = require('./original')(bs58ALPHABET)
 
 var fixtureIndex = 0
 var resetFixtureIndex = function () { fixtureIndex = 0 }
@@ -22,8 +25,8 @@ var seed = process.env.SEED || crypto.randomBytes(16).toString('hex')
 console.log('Seed: ' + seed)
 var prng = new XorShift128Plus(seed)
 for (var i = 0; i < fixtures.length; ++i) {
-  let source = prng.randomBytes(32)
-  fixtures[i] = { source, string: bs58.encode(source) }
+  var source = prng.randomBytes(32)
+  fixtures[i] = { source, string: bs58Js.encode(source) }
 }
 
 if (/fast/i.test(process.argv[2])) {
@@ -35,26 +38,30 @@ if (/fast/i.test(process.argv[2])) {
   benchmark.options.minTime = 1
 }
 
-new benchmark.Suite({
-  onStart: function () {
-    console.log('--------------------------------------------------')
-  },
-  onCycle: function (event) {
-    console.log(String(event.target))
-  },
-  onError: function (event) {
-    console.error(event.target.error)
-  },
-  onComplete: function () {
-    console.log('==================================================')
-  }
+suite
+.on('cycle', function(event) {
+  benchmarks.add(event.target)
 })
-.add('encode', function () {
+
+suite.on('complete', function() {
+  benchmarks.log()
+})
+
+suite
+.add('rust_encode', function () {
   var fixture = getNextFixture()
-  bs58.encode(fixture.source)
+  bs58Rust.encode(fixture.source)
 }, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
-.add('decode', function () {
+.add('rust_decode', function () {
   var fixture = getNextFixture()
-  bs58.decode(fixture.string)
+  bs58Rust.decode(fixture.string)
+}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
+.add('js_encode', function () {
+  var fixture = getNextFixture()
+  bs58Js.encode(fixture.source)
+}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
+.add('js_decode', function () {
+  var fixture = getNextFixture()
+  bs58Js.decode(fixture.string)
 }, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
 .run()

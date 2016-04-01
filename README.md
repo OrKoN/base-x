@@ -5,7 +5,9 @@
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-Fast base encoding / decoding of any given alphabet using bitcoin style leading
+This is a fork of the original project that uses a Rust module to do computations.
+
+[Not Yet Fast] base encoding / decoding of any given alphabet using bitcoin style leading
 zero compression.
 
 ## Example
