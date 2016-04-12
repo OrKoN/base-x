@@ -1,7 +1,20 @@
-sudo: false
-language: node_js
-node_js:
-  - "5"
+language: rust
+rust:
+  - stable
+
+env:
+  - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+
 before_install:
-  - curl -sSf https://static.rust-lang.org/rustup.sh | sh
+  - source $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+
 script: npm run test
