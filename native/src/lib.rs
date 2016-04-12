@@ -4,10 +4,9 @@ extern crate base_x;
 
 use neon::vm;
 use neon::vm::{Call, JsResult};
-use neon::js::{JsInteger, JsString};
+use neon::js::{JsString};
 use neon::js::binary::JsBuffer;
 use neon::mem::Handle;
-use neon::js::Object;
 
 fn encode(call: Call) -> JsResult<JsString> {
   let scope = call.scope;
@@ -15,9 +14,10 @@ fn encode(call: Call) -> JsResult<JsString> {
   let alphabet =  &alphabet.value();
   let buffer: Handle<JsBuffer> = try!(try!(call.arguments.require(scope, 1)).check::<JsBuffer>());
   let result = vm::lock(buffer, |data| {
-    let mut vec:Vec<i16> = Vec::new();
-    for el in data.as_slice().unwrap() {
-      vec.push((*el) as i16);
+    let mut vec:Vec<i16> = Vec::with_capacity(data.len());
+    let pointer = data.as_ptr();
+    for i in 0..data.len() {
+      vec.push(unsafe { *pointer.offset(i as isize) as i16 });
     }
     base_x::encode(alphabet, vec)
   });
@@ -32,12 +32,11 @@ fn decode(call: Call) -> JsResult<JsBuffer> {
   let input =  &input.value();
   let result = base_x::decode(alphabet, input);
   let buffer = try!(JsBuffer::new(scope, result.len() as u32));
-  let len = result.len();
-  vm::lock(buffer, |mut data| {
-    let mut b = data.as_mut_slice().unwrap();
+  vm::lock(buffer, |data| {
+    let mut b = data;
     let mut i = 0;
     for x in & result {
-      b[i] = (*x as u8);
+      b[i] = *x as u8;
       i=i+1;
     }
   });
