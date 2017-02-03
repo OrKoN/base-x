@@ -14,8 +14,8 @@ addons:
 
 before_install:
   - source $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
+  - nvm install 4
+  - nvm use 4
   - npm install
 
 script: npm run test
