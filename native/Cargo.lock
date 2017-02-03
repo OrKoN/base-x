@@ -2,13 +2,13 @@
 name = "base-x-neon"
 version = "0.1.0"
 dependencies = [
- "base-x 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "base-x 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "neon 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "base-x"
-version = "0.1.2"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -39,3 +39,9 @@ dependencies = [
  "gcc 0.3.26 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
+[metadata]
+"checksum base-x 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c1bdfe01f4cba990e6c92254d603479b25f6ee6637f27a436e1d96e39c0dbd35"
+"checksum cslice 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e8baf4a5864abdaebaa3010482359145b9d23fb110767a0beccb5a25e338fbe1"
+"checksum gcc 0.3.26 (registry+https://github.com/rust-lang/crates.io-index)" = "3337bf4deec8dd33c331a62b59708f5b438779b8089b1888d56976ac2c325d3e"
+"checksum neon 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)" = "bf01eff88a04becd71f0dbc33654a71a18766fb5afe99bf5f047b15492b0224b"
+"checksum neon-sys 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)" = "7c0a0002fc3b07321da6a45e588be5120b22c526cd380eddb0918f073e105dc0"
