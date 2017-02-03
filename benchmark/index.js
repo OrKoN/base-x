@@ -1,7 +1,8 @@
 'use strict'
 var crypto = require('crypto')
 var benchmark = require('benchmark')
-var suite = new benchmark.Suite()
+var suiteEncode = new benchmark.Suite()
+var suiteDecode = new benchmark.Suite()
 var benchmarks = require('beautify-benchmark')
 var XorShift128Plus = require('xorshift.js').XorShift128Plus
 
@@ -38,30 +39,44 @@ if (/fast/i.test(process.argv[2])) {
   benchmark.options.minTime = 1
 }
 
-suite
+suiteEncode
 .on('cycle', function (event) {
   benchmarks.add(event.target)
 })
 
-suite.on('complete', function () {
+suiteEncode.on('complete', function () {
   benchmarks.log()
 })
 
-suite
+suiteEncode
 .add('rust_encode', function () {
   var fixture = getNextFixture()
   bs58Rust.encode(fixture.source)
+}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
+
+.add('js_encode', function () {
+  var fixture = getNextFixture()
+  bs58Js.encode(fixture.source)
+}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
+.run()
+
+suiteDecode
+.on('cycle', function (event) {
+  benchmarks.add(event.target)
+})
+
+suiteDecode.on('complete', function () {
+  benchmarks.log()
+})
+
+suiteDecode
+.add('js_decode', function () {
+  var fixture = getNextFixture()
+  bs58Js.decode(fixture.string)
 }, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
 .add('rust_decode', function () {
   var fixture = getNextFixture()
   bs58Rust.decode(fixture.string)
 }, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
-.add('js_encode', function () {
-  var fixture = getNextFixture()
-  bs58Js.encode(fixture.source)
-}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
-.add('js_decode', function () {
-  var fixture = getNextFixture()
-  bs58Js.decode(fixture.string)
-}, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
-.run()
+.run();
+
