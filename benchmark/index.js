@@ -78,5 +78,4 @@ suiteDecode
   var fixture = getNextFixture()
   bs58Rust.decode(fixture.string)
 }, {onStart: resetFixtureIndex, onCycle: resetFixtureIndex})
-.run();
-
+.run()
