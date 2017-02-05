@@ -5,9 +5,12 @@
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-This is a fork of the original project that uses a Rust module to do computations: https://github.com/cryptocoinjs/base-x
+This is a fork of https://github.com/cryptocoinjs/base-x that uses a native module written in Rust to do computations: base encoding / decoding of any given alphabet using bitcoin style leading zero compression.
 
-base encoding / decoding of any given alphabet using bitcoin style leading zero compression.
+Rust module: https://github.com/OrKoN/base-x-rs
+
+
+Many thanks to [dignifiedquire](https://github.com/dignifiedquire) for cleaning up this module and making it really fast.
 
 ## Benchmark: Rust version vs JS version
 
