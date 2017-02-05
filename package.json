@@ -32,7 +32,7 @@
     "standard": "standard",
     "test": "npm run unit && npm run standard",
     "unit": "tape test/*.js",
-    "install": "neon build",
+    "postinstall": "neon build",
     "bench": "node ./benchmark/index.js"
   },
   "devDependencies": {
