@@ -22,7 +22,7 @@ Base58
 
 ``` javascript
 var BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-var bs58 = require('base-x')(BASE58)
+var bs58 = require('base-x-native')(BASE58)
 
 var decoded = bs58.decode('5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr')
 
