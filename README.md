@@ -7,8 +7,11 @@
 
 This is a fork of the original project that uses a Rust module to do computations: https://github.com/cryptocoinjs/base-x
 
-base encoding / decoding of any given alphabet using bitcoin style leading
-zero compression.
+base encoding / decoding of any given alphabet using bitcoin style leading zero compression.
+
+## Benchmark: Rust version vs JS version
+
+[![benchmark](benchmark.png)](benchmark.png)
 
 ## Example
 
