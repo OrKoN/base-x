@@ -1,6 +1,6 @@
 {
   "name": "base-x-native",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Fast base encoding / decoding of any given alphabet",
   "keywords": [
     "base-x",
