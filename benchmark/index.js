@@ -8,7 +8,7 @@ var XorShift128Plus = require('xorshift.js').XorShift128Plus
 
 var bs58ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 var bs58Rust = require('../')(bs58ALPHABET)
-var bs58Js = require('./original')(bs58ALPHABET)
+var bs58Js = require('base-x')(bs58ALPHABET)
 
 var fixtureIndex = 0
 var resetFixtureIndex = function () { fixtureIndex = 0 }
